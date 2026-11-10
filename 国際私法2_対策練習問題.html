@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国際私法Ⅱ 対策練習問題（契約・不法行為）</title>
+<style>
+  :root{
+    --p1:#7a5fb0; --p2:#9b84c9; --p3:#b9a7dc; --bg:#f6f3fb; --ink:#2d2640;
+    --ok:#2e8b57; --ng:#c0392b; --card:#ffffff; --line:#e3dcf0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.8;}
+  header{background:linear-gradient(120deg,var(--p1),var(--p2));color:#fff;padding:26px 20px;}
+  header h1{margin:0 0 6px;font-size:1.5rem;}
+  header .meta{font-size:.92rem;opacity:.95}
+  .wrap{max-width:900px;margin:0 auto;padding:18px;}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;}
+  .tabs button{border:1px solid var(--p2);background:#fff;color:var(--p1);
+    padding:9px 16px;border-radius:999px;cursor:pointer;font-size:.95rem;font-weight:700;}
+  .tabs button.active{background:var(--p1);color:#fff;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;margin:16px 0;box-shadow:0 2px 8px rgba(122,95,176,.06);}
+  .card h3{margin:0 0 4px;color:var(--p1);}
+  .sub{color:#7d7595;font-size:.85rem;margin-bottom:10px;}
+  .q{margin:14px 0;padding:12px 14px;border-left:4px solid var(--p3);background:#faf8fe;border-radius:0 10px 10px 0;}
+  .q .num{font-weight:700;color:var(--p1);margin-right:6px;}
+  .q input[type=text]{width:220px;max-width:70%;padding:6px 10px;border:1px solid var(--line);
+    border-radius:8px;font-size:1rem;margin:0 4px;}
+  .q textarea{width:100%;min-height:120px;padding:10px;border:1px solid var(--line);
+    border-radius:8px;font-size:.98rem;font-family:inherit;margin-top:8px;}
+  .fb{font-size:.9rem;margin-top:6px;display:none;}
+  .fb.show{display:block;}
+  .fb.correct{color:var(--ok);}
+  .fb.wrong{color:var(--ng);}
+  .model{display:none;margin-top:10px;background:#f1ecfa;border:1px dashed var(--p2);
+    border-radius:10px;padding:12px 14px;font-size:.95rem;}
+  .model.show{display:block;}
+  .model b{color:var(--p1);}
+  .kw{display:inline-block;background:#e7defa;color:var(--p1);border-radius:6px;
+    padding:1px 8px;margin:2px;font-size:.85rem;}
+  .btn{background:var(--p1);color:#fff;border:none;padding:10px 20px;border-radius:10px;
+    cursor:pointer;font-size:.98rem;font-weight:700;margin:6px 6px 6px 0;}
+  .btn.ghost{background:#fff;color:var(--p1);border:1px solid var(--p2);}
+  .score{font-size:1.15rem;font-weight:800;color:var(--p1);margin-top:12px;}
+  .timer{position:sticky;top:0;z-index:5;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:16px;
+    justify-content:space-between;box-shadow:0 2px 8px rgba(122,95,176,.08);margin-bottom:8px;}
+  .timer .t{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--p1);}
+  .timer .t.warn{color:var(--ng);}
+  .pts{font-size:.82rem;color:#7d7595;font-weight:700;float:right;}
+  details{margin:8px 0;border:1px solid var(--line);border-radius:10px;padding:6px 12px;background:#fff;}
+  summary{cursor:pointer;font-weight:700;color:var(--p1);}
+  .tag{display:inline-block;font-size:.72rem;background:var(--p3);color:#fff;border-radius:6px;padding:1px 8px;margin-left:6px;vertical-align:middle;}
+  .hint{font-size:.82rem;color:#938bb0;}
+  footer{text-align:center;color:#938bb0;font-size:.8rem;padding:30px 10px;}
+  .intro{background:#efe9fb;border-radius:12px;padding:14px 18px;font-size:.92rem;}
+  ul.law{margin:6px 0 0;padding-left:1.2em;font-size:.9rem;}
+  @media(max-width:600px){.q input[type=text]{max-width:60%}}
+</style>
+</head>
+<body>
+<header>
+  <h1>国際私法Ⅱ 対策練習問題</h1>
+  <div class="meta">範囲：①契約／②不法行為　｜　配点：30点　｜　形式：空欄穴埋め＋記述式　｜　時間：30分程度</div>
+</header>
+
+<div class="wrap">
+  <div class="intro">
+    本番形式（30点・約30分）の<b>模擬試験を2回分</b>、条文・用語を固める<b>分野別穴埋めドリル</b>、要点確認の<b>チェックシート</b>を収録。
+    穴埋めは「答え合わせ」で自動採点（<span class="hint">「条」の有無・全角半角・別解に対応</span>）、記述式は模範解答とキーワードで自己採点します。
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button data-t="mock1" class="active">模試 第1回</button>
+    <button data-t="mock2">模試 第2回</button>
+    <button data-t="random">ランダム模試 🔀</button>
+    <button data-t="descbank">記述対策 ✍️</button>
+    <button data-t="drillK">ドリル：契約</button>
+    <button data-t="drillF">ドリル：不法行為</button>
+    <button data-t="check">チェックシート</button>
+  </div>
+
+  <!-- ================= MOCK 1 ================= -->
+  <div class="panel active" id="mock1">
+    <div class="timer">
+      <div>模試 第1回 <span class="hint">／30点・30分</span></div>
+      <div class="t" id="t-mock1">30:00</div>
+      <div>
+        <button class="btn ghost" onclick="startTimer('mock1')">開始</button>
+        <button class="btn ghost" onclick="resetTimer('mock1')">リセット</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>第1問　空欄穴埋め <span class="pts">20点（各1点）</span></h3>
+      <div class="sub">通則法の条文番号・用語を答えよ。</div>
+      <div id="m1-fill"></div>
+    </div>
+
+    <div class="card">
+      <h3>第2問　記述式 <span class="pts">10点（各5点）</span></h3>
+      <div id="m1-desc"></div>
+    </div>
+
+    <div style="text-align:center">
+      <button class="btn" onclick="grade('mock1')">答え合わせ（穴埋め採点）</button>
+      <button class="btn ghost" onclick="showModels('mock1')">記述の模範解答を表示</button>
+    </div>
+    <div class="score" id="score-mock1"></div>
+  </div>
+
+  <!-- ================= MOCK 2 ================= -->
+  <div class="panel" id="mock2">
+    <div class="timer">
+      <div>模試 第2回 <span class="hint">／30点・30分</span></div>
+      <div class="t" id="t-mock2">30:00</div>
+      <div>
+        <button class="btn ghost" onclick="startTimer('mock2')">開始</button>
+        <button class="btn ghost" onclick="resetTimer('mock2')">リセット</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>第1問　空欄穴埋め <span class="pts">20点（各1点）</span></h3>
+      <div class="sub">通則法の条文番号・用語を答えよ。</div>
+      <div id="m2-fill"></div>
+    </div>
+
+    <div class="card">
+      <h3>第2問　記述式 <span class="pts">10点（各5点）</span></h3>
+      <div id="m2-desc"></div>
+    </div>
+
+    <div style="text-align:center">
+      <button class="btn" onclick="grade('mock2')">答え合わせ（穴埋め採点）</button>
+      <button class="btn ghost" onclick="showModels('mock2')">記述の模範解答を表示</button>
+    </div>
+    <div class="score" id="score-mock2"></div>
+  </div>
+
+  <!-- ================= RANDOM ================= -->
+  <div class="panel" id="random">
+    <div class="timer">
+      <div>ランダム模試 <span class="hint">／30点・30分・毎回シャッフル</span></div>
+      <div class="t" id="t-random">30:00</div>
+      <div>
+        <button class="btn ghost" onclick="startTimer('random')">開始</button>
+        <button class="btn ghost" onclick="resetTimer('random')">リセット</button>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin:10px 0">
+      <button class="btn" onclick="generateRandom()">🔀 新しい問題を生成</button>
+      <div class="hint">契約①〜㊺・不法行為①〜㉞から穴埋め20問、記述4問から2問をランダム抽出します。</div>
+    </div>
+
+    <div class="card">
+      <h3>第1問　空欄穴埋め <span class="pts">20点（各1点）</span></h3>
+      <div class="sub">毎回ランダムに並び替え・抽出されます。</div>
+      <div id="rnd-fill"></div>
+    </div>
+
+    <div class="card">
+      <h3>第2問　記述式 <span class="pts">10点（各5点）</span></h3>
+      <div id="rnd-desc"></div>
+    </div>
+
+    <div style="text-align:center">
+      <button class="btn" onclick="grade('random')">答え合わせ（穴埋め採点）</button>
+      <button class="btn ghost" onclick="showModels('random')">記述の模範解答を表示</button>
+    </div>
+    <div class="score" id="score-random"></div>
+  </div>
+
+  <!-- ================= 記述対策 ================= -->
+  <div class="panel" id="descbank">
+    <div class="card">
+      <h3>記述対策 ✍️（契約・不法行為）</h3>
+      <div class="sub">Case・例題・判例から記述問題14問。答案を書いて「模範解答」と採点キーワードで自己採点。</div>
+      <div style="text-align:center;margin-bottom:6px">
+        <button class="btn ghost" onclick="shuffleDesc()">🔀 順番シャッフル</button>
+        <button class="btn ghost" onclick="showModels('descbank')">全模範解答を表示</button>
+      </div>
+      <div id="desc-bank"></div>
+    </div>
+  </div>
+
+  <!-- ================= DRILL 契約 ================= -->
+  <div class="panel" id="drillK">
+    <div class="card">
+      <h3>分野別ドリル：契約（通則法7〜12条）</h3>
+      <div class="sub">スライド穴埋め①〜㊺に対応。用語・条文を入力して「答え合わせ」。</div>
+      <div id="dk-fill"></div>
+      <div style="text-align:center">
+        <button class="btn" onclick="grade('drillK')">答え合わせ</button>
+        <button class="btn ghost" onclick="shuffleDrill('drillK')">🔀 シャッフル</button>
+        <button class="btn ghost" onclick="revealAll('drillK')">全解答を表示</button>
+      </div>
+      <div class="score" id="score-drillK"></div>
+    </div>
+  </div>
+
+  <!-- ================= DRILL 不法行為 ================= -->
+  <div class="panel" id="drillF">
+    <div class="card">
+      <h3>分野別ドリル：不法行為（通則法17〜22条）</h3>
+      <div class="sub">スライド穴埋め①〜㉞に対応。</div>
+      <div id="df-fill"></div>
+      <div style="text-align:center">
+        <button class="btn" onclick="grade('drillF')">答え合わせ</button>
+        <button class="btn ghost" onclick="shuffleDrill('drillF')">🔀 シャッフル</button>
+        <button class="btn ghost" onclick="revealAll('drillF')">全解答を表示</button>
+      </div>
+      <div class="score" id="score-drillF"></div>
+    </div>
+  </div>
+
+  <!-- ================= CHECK SHEET ================= -->
+  <div class="panel" id="check">
+    <div class="card">
+      <h3>チェックシート：契約の準拠法</h3>
+      <ul class="law">
+        <li><b>当事者自治（7条）</b>：法律行為当時に当事者が選択した地の法。純国内的契約でも外国法を選択可。「地」の法のみ（UNIDROIT等のモデルルール不可）。</li>
+        <li><b>変更（9条）</b>：締結後に準拠法を変更可。ただし第三者の権利を害するときは対抗不可→第三者との関係では<b>変更前の法</b>。</li>
+        <li><b>最密接関係地法（8条1項）</b>：法選択がないとき。推定＝<b>特徴的給付</b>を行う者の常居所地法（2項）／不動産は<b>不動産所在地</b>法（3項）。推定は覆りうる。</li>
+        <li><b>分割指定（デペサージュ）</b>／<b>黙示的法選択</b>（管轄合意・仲裁地等から認定）。</li>
+        <li><b>方式（10条）</b>：成立準拠法（1項）＋行為地法（2項）の<b>選択的適用</b>。1項優先。隔地的契約は申込地法／承諾地法（4項）。</li>
+        <li><b>消費者契約（11条）</b>：常居所地法の強行規定で保護。選択あり→7・9条＋11条1項（強行規定の上乗せ）。選択なし→11条2項（常居所地法が全面適用、8条不適用）。方式は3〜5項。適用除外＝11条6項（<b>能動的消費者</b>等）。</li>
+        <li><b>労働契約（12条）</b>：最密接関係地法＝原則<b>労務提供地法</b>（特定不能なら雇入れ事業所所在地法）。選択なし→8条1項＋推定12条3項。方式は10条。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>チェックシート：不法行為の準拠法</h3>
+      <ul class="law">
+        <li><b>プロセス</b>：①17〜19条で原則準拠法→②20・21条で確定→③外国法なら22条。</li>
+        <li><b>一般（17条）</b>：原則<b>結果発生地</b>法。ただし結果発生が通常予見不能なら<b>加害行為地</b>法。「結果」＝直接侵害された権利の所在地（損害発生地と区別）。</li>
+        <li><b>生産物責任（18条）</b>：原則<b>引渡し地</b>法。予見不能なら生産業者等の<b>主たる事業所</b>所在地法。引渡しを受けた者＋家族に適用。無関係のバイスタンダーは17条。</li>
+        <li><b>名誉・信用毀損（19条）</b>：<b>被害者の常居所地</b>法。予見不能の例外なし。</li>
+        <li><b>例外（20条）</b>：明らかにより密接な他地の法。例示＝同一常居所地／契約義務違反（<b>附従的連結</b>）。<b>21条</b>：事後的な準拠法変更（第三者に対抗不可）。</li>
+        <li><b>累積適用（22条）</b>：外国法が準拠法でも日本法を累積。1項＝成立を日本法が否定すれば否定。2項＝効果は日本法が許す範囲（懲罰的賠償は減額）。42条公序（異常性＋関連性）との違いに注意。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>主要判例（百選）早見</h3>
+      <details><summary>百選27事件（東京地判H14.2.26）— 準拠法の分割指定</summary>
+        英文保険証券の英国法準拠条項。責任・決済（保険事故該当性・填補範囲・消滅時効・損害防止義務）＝英国法、告知義務違反（締結段階）＝日本法。法例7条の分割指定。</details>
+      <details><summary>百選28事件（東京地判R元.8.27）— 最密接関係地法</summary>
+        冷凍うなぎ売買。特徴的給付＝売主の引渡し→売主（中国企業）の常居所地法＝中国法と推定。日本円建て等でも推定は覆らず中国法。</details>
+      <details><summary>百選34事件（東京高判H30.1.16）— 17条の結果発生地</summary>
+        結果発生地＝加害行為により直接侵害された権利が侵害発生時に所在した地（＝損害発生地と別概念）。日本で欺罔・意思表示→結果発生地は日本。</details>
+      <details><summary>百選36事件（東京地判H28.11.30）— 名誉毀損／プライバシー</summary>
+        名誉毀損＝19条（被害者常居所地＝日本法）。プライバシー侵害＝17条（結果発生地＝日本法）。20条による排除なし。</details>
+      <details><summary>百選35事件（知財高判H31.1.24）— 不正競争・例外20条</summary>
+        商品形態模倣＝不法行為。17条で販売先各国法が原則だが、両社本店が日本等→20条で日本法が明らかに密接。</details>
+      <details><summary>大韓航空機撃墜事件（東京地判H9.7.16）— 公海上の不法行為</summary>
+        結果発生地説では法の存在しない場所。法例下で<b>条理</b>により、被害者本国法＝法廷地法＝日本法を適用。</details>
+    </div>
+  </div>
+
+  <footer>国際私法Ⅱ 対策練習問題｜学習用・自己採点ツール（通則法＝法の適用に関する通則法）</footer>
+</div>
+
+<script>
+/* ---------- データ ---------- */
+/* fill item: {n, pre, post, a:[別解...], hint} ／ 採点は正規化後に a のいずれかと一致で正解 */
+
+const MOCK1_FILL = [
+ {n:1, pre:"通則法7条・9条が認める、当事者による準拠法選択の原則を（", post:"）の原則という。", a:["当事者自治"]},
+ {n:2, pre:"法選択がないとき、締結時に最も密接な関係がある地の法〔＝（", post:"）〕が適用される（8条1項）。", a:["最密接関係地法","最密接関係地"]},
+ {n:3, pre:"1つの契約を部分ごとに分けて準拠法を選ぶことを（", post:"）という。", a:["分割指定","デペサージュ"]},
+ {n:4, pre:"8条2項では（", post:"）を行う当事者の常居所地法を最密接関係地法と推定する。", a:["特徴的給付"]},
+ {n:5, pre:"不動産を目的とする法律行為は（", post:"）の法が最密接関係地法と推定される（8条3項）。", a:["不動産所在地"]},
+ {n:6, pre:"法律行為の方式は、原則として（", post:"）の準拠法による（10条1項）。", a:["法律行為の成立","成立"]},
+ {n:7, pre:"方式は（", post:"）によることもできる（10条2項）。", a:["行為地法","行為地"]},
+ {n:8, pre:"消費者は常居所地法中の特定の（", post:"）の適用を事業者に求めうる（11条1項）。", a:["強行規定"]},
+ {n:9, pre:"消費者契約で法選択がないときは（", post:"）による（11条2項）。", a:["消費者の常居所地法","常居所地法"]},
+ {n:10, pre:"自ら事業所所在地に赴き契約した（", post:"）には11条の保護が及ばない（適用除外）。", a:["能動的消費者","アクティブコンシューマー"]},
+ {n:11, pre:"労働契約の最密接関係地法は、原則として（", post:"）である（12条2項・3項）。", a:["労務提供地法","労務提供地"]},
+ {n:12, pre:"一般の不法行為は、原則として（", post:"）法による（17条本文）。", a:["結果発生地"]},
+ {n:13, pre:"結果発生地での結果発生が通常予見不能なら（", post:"）法による（17条ただし書）。", a:["加害行為地"]},
+ {n:14, pre:"加害行為地と結果発生地が異なる不法行為を（", post:"）という。", a:["隔地的不法行為"]},
+ {n:15, pre:"生産物責任は、原則として生産物の（", post:"）法による（18条本文）。", a:["引渡し地","引渡地"]},
+ {n:16, pre:"名誉又は信用の毀損は（", post:"）法による（19条）。", a:["被害者の常居所地","被害者常居所地","被害者の常居所地法"]},
+ {n:17, pre:"原則準拠法より明らかに密接な他地の法があればその地の法による（", post:"）。", a:["20条"]},
+ {n:18, pre:"不法行為後の当事者による準拠法変更を定めるのは（", post:"）。", a:["21条"]},
+ {n:19, pre:"契約準拠法等へ連結することを（", post:"）という（20条の例示）。", a:["附従的連結"]},
+ {n:20, pre:"17〜21条で外国法が準拠法でも日本法が（", post:"）される（22条）。", a:["累積的に適用","累積適用","累積的適用"]},
+];
+const MOCK1_DESC = [
+ {n:1, q:"準拠法の分割指定について、百選27事件（東京地判平成14・2・26）を素材に、どの法律問題にどの国の法が適用されたかを含めて説明せよ。",
+  model:"分割指定（デペサージュ）とは、1つの契約を可分な部分ごとに分けて別々の準拠法を選択すること。本件英文保険証券の英国法準拠条項は、<b>保険事故該当性・填補される損害の範囲・保険金支払方法・保険金請求権の消滅時効・遅延損害金・損害防止義務</b>など「請求に対する責任及び決済」に関する問題には<b>英国法</b>を適用し、それ以外（<b>告知義務違反＝締結段階の問題</b>）には法例7条（通則法7条）により行為地法である<b>日本法</b>を適用する旨の分割指定と解された。",
+  kw:["分割指定／デペサージュ","可分な部分ごと","責任・決済＝英国法","消滅時効・損害防止義務＝英国法","告知義務違反＝締結段階","日本法","法例7条（通則法7条）"]},
+ {n:2, q:"隔地的不法行為における通則法17条本文・ただし書の適用を説明せよ。あわせて、生産物の引渡しを受けた者と無関係のバイスタンダーの処理も述べよ。",
+  model:"17条本文は原則として<b>結果発生地法</b>による。加害行為地と結果発生地が異なる<b>隔地的不法行為</b>では、ただし書により「結果発生地での結果の発生が<b>通常予見</b>できないものであったとき」は<b>加害行為地法</b>による。予見可能性は加害者の主観でなく、加害者と同じ立場の者を基準に客観的に判断。生産物の引渡しを受けた者（＋生計を共にする家族等）には18条（引渡し地法）が適用されるが、引渡しと無関係の<b>バイスタンダー</b>は引渡し地を予見できないため18条でなく<b>17条</b>（予見可能な結果発生地法）による。最後に20条・21条で準拠法を確定する。",
+  kw:["原則＝結果発生地法","隔地的不法行為","通常予見不能→加害行為地法","予見は客観的基準","引渡しを受けた者＋家族＝18条","バイスタンダー＝17条","20条・21条で確定"]},
+];
+
+const MOCK2_FILL = [
+ {n:1, pre:"通則法第2節「法律行為」は、主として（", post:"）（債権的法律行為）を対象とする。", a:["契約"]},
+ {n:2, pre:"9条ただし書により、準拠法変更が第三者の権利を害するとき、第三者との関係では（", post:"）が適用される。", a:["変更前の法","変更前の準拠法"]},
+ {n:3, pre:"契約書に選択条項がなくても事情から法選択を認める場合を（", post:"）法選択という。", a:["黙示的","黙示"]},
+ {n:4, pre:"特徴的給付がない契約の例として（", post:"）や和解契約がある。", a:["交換契約","交換"]},
+ {n:5, pre:"契約締結後の法選択（変更）は（", post:"）による。", a:["9条"]},
+ {n:6, pre:"方式の準拠法で、成立準拠法（1項）と行為地法（2項）は（", post:"）適用の関係にある。", a:["選択的"]},
+ {n:7, pre:"隔地的契約の方式は、1項に加え申込地法又は（", post:"）法によることもできる（10条4項）。", a:["承諾地","承諾地法"]},
+ {n:8, pre:"消費者とは、事業として／事業のために当事者となる場合を除く（", post:"）をいう。", a:["個人"]},
+ {n:9, pre:"消費者契約の方式で、常居所地法以外の法が選択されたときは10条＋（", post:"）が適用される。", a:["11条3項"]},
+ {n:10, pre:"11条6項3号で、事業者が消費者の（", post:"）を過失なく知らなかったときは適用除外となる。", a:["常居所地","常居所"]},
+ {n:11, pre:"17条の「結果」とは、加害行為により生じた（", post:"）な損害をいい、損害発生地と区別される。", a:["直接的","直接"]},
+ {n:12, pre:"百選34事件で、17条の結果発生地は直接侵害された権利の所在地であり（", post:"）とは別概念とされた。", a:["損害発生地"]},
+ {n:13, pre:"引渡し地での引渡しが通常予見不能なら、生産業者等の（", post:"）所在地法による（18条ただし書）。", a:["主たる事業所","主たる事業所所在地"]},
+ {n:14, pre:"引渡しと無関係のバイスタンダーの請求には、一般の不法行為に関する（", post:"）が適用される。", a:["17条"]},
+ {n:15, pre:"20条が掲げる「同一常居所地」「契約義務違反」は（", post:"）列挙である。", a:["例示"]},
+ {n:16, pre:"契約義務に違反した不法行為では、契約準拠法への（", post:"）が認められやすい。", a:["附従的連結"]},
+ {n:17, pre:"大韓航空機撃墜事件（公海上）では、法例下で（", post:"）により被害者本国法＝日本法を適用した。", a:["条理"]},
+ {n:18, pre:"22条2項により、外国法に基づく不法行為の（", post:"）は日本法が許す範囲でのみ認められる。", a:["効果"]},
+ {n:19, pre:"通則法42条の公序は「適用結果の異常性」＋「（", post:"）」で判断される。", a:["日本との関連性","関連性"]},
+ {n:20, pre:"消費者契約で常居所地法が選択されたときは特則がなく（", post:"）がそのまま適用される。", a:["消費者の常居所地法","常居所地法","選択された法"]},
+];
+const MOCK2_DESC = [
+ {n:1, q:"消費者契約の特例（通則法11条）について、(1)準拠法選択がある場合〔常居所地法が選択されたとき／それ以外の法が選択されたとき〕、(2)選択がない場合に分けて、消費者がどう保護されるかを説明せよ。",
+  model:"趣旨：当事者間の情報・交渉力が対等でないため、どの法が選択されても<b>消費者の常居所地法</b>による保護を保障する。<br>(1)法選択あり：①<b>常居所地法が選択</b>→7条・9条の原則どおり特則なしでそのまま適用。②<b>常居所地法以外の法が選択</b>→7条・9条＋<b>11条1項</b>。消費者が常居所地法中の特定の<b>強行規定</b>の適用を希望する旨を事業者に示せば、その強行規定も上乗せ適用される。<br>(2)法選択なし：<b>11条2項</b>により<b>消費者の常居所地法が全面適用</b>（8条の最密接関係地法は不適用）。<br>方式は11条3〜5項、適用除外は11条6項（能動的消費者等）。",
+  kw:["趣旨＝情報・交渉力の不均衡／常居所地法の保護","常居所地法選択→特則なし","他法選択→11条1項＋強行規定の上乗せ","希望を事業者に示す","選択なし→11条2項・常居所地法が全面適用","8条不適用","適用除外11条6項"]},
+ {n:2, q:"通則法22条の日本法の累積的適用と、42条の公序則との違いを、懲罰的損害賠償を例に説明せよ。",
+  model:"22条：17〜21条で外国法が準拠法となる場合でも日本法を<b>累積的に適用</b>。1項＝外国法が成立を肯定しても日本法が否定すれば請求は否定。2項＝成立を双方肯定しても、不法行為の<b>効果</b>（損害賠償額・原状回復措置）は日本法が許す範囲でのみ認める。よって外国法で高額な<b>懲罰的損害賠償</b>が命じられても日本法の水準まで減額される。<br>42条（公序）は、準拠外国法の<b>適用結果の異常性</b>＋<b>日本との関連性</b>を考慮して発動を判断するが、22条は成立・効果の異常性や関連性を問題にせず<b>一律に日本法を適用</b>する点で異なる（22条も公序の一種だが発動要件が緩やか）。",
+  kw:["22条＝日本法の累積適用","1項＝成立を否定なら否定","2項＝効果は日本法の範囲","懲罰的賠償は減額","42条＝異常性＋日本との関連性","22条は一律適用（要件を問わない）"]},
+];
+
+/* 契約ドリル ①〜㊺ */
+const DRILL_K = [
+ {n:"①", pre:"通則法第2節は「（", post:"）」というタイトルだが、主として契約を対象とする。", a:["法律行為"]},
+ {n:"②", pre:"物権的法律行為や（", post:"）（婚姻・離婚・認知・養子縁組・遺言等）は第2節の対象外。", a:["身分的法律行為"]},
+ {n:"③", pre:"当事者による準拠法選択を認める「（", post:"）の原則」（7条・9条）。", a:["当事者自治"]},
+ {n:"④", pre:"準拠法変更後の法で第三者の権利が害されるとき、第三者との関係では（", post:"）が適用される（9条ただし書）。", a:["変更前の法","変更前の準拠法"]},
+ {n:"⑤", pre:"部分ごとに準拠法を選択する（", post:"）（デペサージュ）。", a:["分割指定","デペサージュ"]},
+ {n:"⑥", pre:"意思を明示しない「（", post:"）法選択」。", a:["黙示的","黙示"]},
+ {n:"⑦", pre:"法律行為当時の法選択は（", post:"）による。", a:["7条"]},
+ {n:"⑧", pre:"（", post:"）：法律行為当時に選択した地の法による。", a:["7条"]},
+ {n:"⑨", pre:"（", post:"）：法選択がないとき最密接関係地法（締結時）による。", a:["8条"]},
+ {n:"⑩", pre:"（", post:"）：当事者は成立・効力の準拠法を変更できる。", a:["9条"]},
+ {n:"⑪", pre:"8条2項の推定基準＝（", post:"）を行う当事者の常居所地（事業所所在地）法。", a:["特徴的給付"]},
+ {n:"⑫", pre:"金銭給付と非金銭給付では（", post:"）を行う者が特徴的給付者。", a:["非金銭給付"]},
+ {n:"⑬", pre:"特徴的給付がない例＝（", post:"）。", a:["交換契約","交換"]},
+ {n:"⑭", pre:"特徴的給付がない例＝（", post:"）、和解契約など。", a:["金銭消費貸借契約","金銭消費貸借"]},
+ {n:"⑮", pre:"不動産を目的とする法律行為は（", post:"）の法が最密接関係地法と推定（3項）。", a:["不動産所在地"]},
+ {n:"⑯", pre:"不動産は通常所在地での（", post:"）が問題になるため所在地法と密接。", a:["登記・登録","登記登録","登記"]},
+ {n:"⑰", pre:"百選28事件：当事者の法選択がないから通則法（", post:"）により最密接関係地が準拠法となる。", a:["8条1項","8条"]},
+ {n:"⑱", pre:"百選28事件：通則法8条1項により（", post:"）が準拠法となる。", a:["最密接関係地","最密接関係地法"]},
+ {n:"⑲", pre:"百選28事件：引渡しという特徴的給付→通則法（", post:"）により売主の常居所地法と推定。", a:["8条2項"]},
+ {n:"⑳", pre:"百選28事件：冷凍うなぎの引渡し＝（", post:"）のみが行う給付。", a:["売主"]},
+ {n:"㉑", pre:"方式が別に準拠法決定される例：婚姻の成立に関する通則法（", post:"）。", a:["24条","24条2項","24条2項・3項"]},
+ {n:"㉒", pre:"方式が別に準拠法決定される例：親族関係の方式に関する通則法（", post:"）。", a:["34条"]},
+ {n:"㉓", pre:"契約自由の一環として「（", post:"）」が原則（口約束でも成立）。", a:["方式の自由"]},
+ {n:"㉔", pre:"法律行為の方式は（", post:"）の準拠法による（10条1項）。", a:["法律行為の成立","成立"]},
+ {n:"㉕", pre:"方式は（", post:"）によることもできる（10条2項）。", a:["行為地法","行為地"]},
+ {n:"㉖", pre:"隔地的契約の方式：（", post:"）又は承諾地によることもできる（10条4項）。", a:["申込地法","申込地"]},
+ {n:"㉗", pre:"隔地的契約の方式：申込地又は（", post:"）によることもできる（10条4項）。", a:["承諾地法","承諾地"]},
+ {n:"㉘", pre:"消費者契約の特例（11条）は、消費者の（", post:"）による保護を保障する。", a:["常居所地法","消費者の常居所地法"]},
+ {n:"㉙", pre:"消費者契約の成立・効力：準拠法選択あり→7or9条＋（", post:"）。", a:["11条1項"]},
+ {n:"㉚", pre:"消費者契約の成立・効力：準拠法選択なし→（", post:"）。", a:["11条2項"]},
+ {n:"㉛", pre:"消費者契約でも保護されない場合（適用除外）＝（", post:"）。", a:["11条6項"]},
+ {n:"㉜", pre:"法選択ありで常居所地法以外が選択→消費者は常居所地法中の特定の（", post:"）の適用を求めうる（11条1項）。", a:["強行規定"]},
+ {n:"㉝", pre:"法選択なし→消費者の常居所地法による。最密接関係地法を定める（", post:"）は不適用（11条2項）。", a:["8条"]},
+ {n:"㉞", pre:"百選30事件：日本の強行規定（民96条1項等）を適用すべき意思表示→通則法（", post:"）により適用（11条1項）。", a:["11条1項"]},
+ {n:"㉟", pre:"消費者契約の方式は契約一般の方式（", post:"）の選択的適用による。", a:["10条"]},
+ {n:"㊱", pre:"方式で常居所地法が選択→10条＋11条4項。希望すれば（", post:"）のみ適用。", a:["消費者の常居所地法","常居所地法"]},
+ {n:"㊲", pre:"方式で常居所地法以外が選択→10条＋11条3項。10条1項の選択肢に（", post:"）は含まれない。", a:["消費者の常居所地法","常居所地法"]},
+ {n:"㊳", pre:"11条6項1号2号：（", post:"）（active consumer）の適用除外。", a:["能動的消費者","アクティブコンシューマー"]},
+ {n:"㊴", pre:"自ら事業所所在地に赴いて（", post:"）したとき（1号）。", a:["契約締結","契約を締結","締結"]},
+ {n:"㊵", pre:"事業所所在地で債務の（", post:"）を受けた／受ける予定のとき（2号）。", a:["全部の履行","履行"]},
+ {n:"㊶", pre:"11条6項3号：事業者が消費者の（", post:"）を過失なく知らなかったとき適用除外。", a:["常居所地","常居所"]},
+ {n:"㊷", pre:"11条6項4号：事業者が相手を（", post:"）でないと過失なく誤認したとき適用除外。", a:["消費者"]},
+ {n:"㊸", pre:"労働契約：準拠法選択あり→7or9条＋（", post:"）（推定＝12条2項）。", a:["12条1項"]},
+ {n:"㊹", pre:"労働契約：準拠法選択なし→（", post:"）（推定＝8条2項→12条3項）。", a:["8条1項"]},
+ {n:"㊺", pre:"法選択なしの労働契約では最密接関係地法が適用され、（", post:"）の推定は不適用。", a:["8条2項"]},
+];
+
+/* 不法行為ドリル ①〜㉞ */
+const DRILL_F = [
+ {n:"①", pre:"不法行為の原則連結点＝（", post:"）地（17条本文）。", a:["結果発生","結果発生地"]},
+ {n:"②", pre:"例外の連結点＝（", post:"）（17条ただし書）。", a:["加害行為地"]},
+ {n:"③", pre:"結果発生地と加害行為地が一致しないもの＝（", post:"）。", a:["隔地的不法行為"]},
+ {n:"④", pre:"17条の「結果」に治療費・休業損害は含まれない（これらは（", post:"））。", a:["損害発生地"]},
+ {n:"⑤", pre:"百選34事件：通則法（", post:"）の結果発生地＝直接侵害された権利の所在地。", a:["17条"]},
+ {n:"⑥", pre:"17条ただし書の「（", post:"）」は加害者と同じ立場の者を基準に客観判断。", a:["通常予見"]},
+ {n:"⑦", pre:"原則準拠法決定後、（", post:"）に該当するか検討して確定する。", a:["20条・21条","20条21条","20・21条"]},
+ {n:"⑧", pre:"生産物責任で予見不能なら生産業者等の（", post:"）の所在地法（18条ただし書）。", a:["主たる事業所"]},
+ {n:"⑨", pre:"生産物責任も最後に（", post:"）に該当するか検討して確定する。", a:["20条・21条","20条21条","20・21条"]},
+ {n:"⑩", pre:"販売業者には生産物責任のほか（", post:"）に基づく請求も可能。", a:["売買契約"]},
+ {n:"⑪", pre:"引渡し地での引渡しが（", post:"）できないときは主たる事業所所在地法（18条）。", a:["通常予見"]},
+ {n:"⑫", pre:"引渡しと無関係の被害者（バイスタンダー）は18条でなく（", post:"）による。", a:["17条"]},
+ {n:"⑬", pre:"名誉・信用毀損も（", post:"）に該当するか検討して確定（19条）。", a:["20条・21条","20条21条","20・21条"]},
+ {n:"⑭", pre:"名誉又は信用の毀損は（", post:"）＝被害者の常居所地法による。", a:["19条"]},
+ {n:"⑮", pre:"百選36事件：プライバシー権侵害は（", post:"）により結果発生地法（日本法）。", a:["17条"]},
+ {n:"⑯", pre:"百選36事件：名誉毀損は（", post:"）により常居所地法（日本法）。", a:["19条"]},
+ {n:"⑰", pre:"20条の例示1：当事者間に（", post:"）があるとき。", a:["同一の常居所地","同一常居所地","同一の常居所"]},
+ {n:"⑱", pre:"東京高判R5.1.25：使用者責任・運行供用者責任も（", post:"）の不法行為に含まれる。", a:["17条"]},
+ {n:"⑲", pre:"東京高判R5.1.25：マレーシアより日本が密接→通則法（", post:"）で日本法。", a:["20条"]},
+ {n:"⑳", pre:"東京高判R5.1.25：X2の請求も統一の観点から（", post:"）で日本法。", a:["20条"]},
+ {n:"㉑", pre:"百選35事件：商品形態模倣（不正競争）は不法行為→通則法（", post:"）。", a:["17条"]},
+ {n:"㉒", pre:"百選35事件：販売先各国より日本が密接→（", post:"）で日本法。", a:["20条"]},
+ {n:"㉓", pre:"20条の例示2：当事者間の契約義務違反。契約関係では不法行為と（", post:"）の請求権が競合しうる。", a:["債務不履行"]},
+ {n:"㉔", pre:"契約準拠法等へ連結することを（", post:"）という。", a:["附従的連結"]},
+ {n:"㉕", pre:"21条で準拠法変更しても第三者との関係では（", post:"）が適用される。", a:["変更前の準拠法","変更前の法"]},
+ {n:"㉖", pre:"大韓航空機撃墜事件：結果発生地説では法例11条1項〔通則法（", post:"）〕の適用がない。", a:["17条"]},
+ {n:"㉗", pre:"大韓航空機撃墜事件：（", post:"）上、被害者本国法＝法廷地法＝日本法を適用。", a:["条理"]},
+ {n:"㉘", pre:"22条：外国法が準拠法でも日本法が（", post:"）される。", a:["累積的に適用","累積適用","累積的適用"]},
+ {n:"㉙", pre:"22条1項：外国法が（", post:"）を肯定しても日本法が否定すれば請求は否定。", a:["成立"]},
+ {n:"㉚", pre:"22条2項：外国法に基づく不法行為の（", post:"）は日本法が許す範囲のみ。", a:["効果"]},
+ {n:"㉛", pre:"42条の公序は「（", post:"）」＋日本との関連性で判断。", a:["適用結果の異常性","適用結果","異常性"]},
+ {n:"㉜", pre:"42条の公序は適用結果の異常性＋「（", post:"）」で判断。", a:["日本との関連性","関連性"]},
+ {n:"㉝", pre:"22条適用の有力説：17・19条で結果発生地等が準拠法→（", post:"）が日本なら22条。", a:["加害行為地"]},
+ {n:"㉞", pre:"22条適用の有力説：18条で引渡し地が準拠法→（", post:"）が日本なら22条。", a:["主たる事業所所在地","主たる事業所"]},
+];
+
+/* ---------- 正規化・採点 ---------- */
+function norm(s){
+  if(!s) return "";
+  s = s.toString().trim();
+  // 全角→半角 英数
+  s = s.replace(/[Ａ-Ｚａ-ｚ０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0));
+  s = s.replace(/[　\s]/g,"");       // 空白除去
+  s = s.replace(/[。、，,.・･]/g,""); // 記号除去
+  s = s.replace(/第/g,"");            // 「第7条」→「7条」
+  s = s.replace(/項$/,"項");
+  return s;
+}
+function matchAns(input, answers){
+  const ni = norm(input);
+  if(ni==="") return false;
+  return answers.some(a=>{
+    const na = norm(a);
+    return ni===na;
+  });
+}
+
+/* ---------- 描画 ---------- */
+function renderFill(containerId, data, idPrefix){
+  const html = data.map((it,i)=>{
+    const id = idPrefix+"_"+i;
+    const label = it.n ? it.n : (i+1);
+    return `<div class="q">
+      <span class="num">${label}</span>${it.pre}
+      <input type="text" id="${id}" autocomplete="off">
+      ${it.post}
+      ${it.hint?`<div class="hint">ヒント：${it.hint}</div>`:""}
+      <div class="fb" id="fb_${id}"></div>
+    </div>`;
+  }).join("");
+  document.getElementById(containerId).innerHTML = html;
+}
+function renderDesc(containerId, data, idPrefix){
+  const html = data.map((it,i)=>{
+    const id = idPrefix+"_d_"+i;
+    const kw = it.kw.map(k=>`<span class="kw">${k}</span>`).join("");
+    const tag = it.tag?`<span class="tag">${it.tag}</span>`:"";
+    return `<div class="q">
+      <div><span class="num">(${it.n})</span>${it.q}${tag}</div>
+      <textarea id="${id}" placeholder="ここに答案を入力（手書き練習でも可）"></textarea>
+      <div style="margin-top:6px"><button class="btn ghost" onclick="toggleModel('${id}')">▼ 模範解答を見る／隠す</button></div>
+      <div class="model" id="model_${id}">
+        <b>▼ 模範解答</b><br>${it.model}
+        <div style="margin-top:8px"><b>採点キーワード：</b><br>${kw}</div>
+      </div>
+    </div>`;
+  }).join("");
+  document.getElementById(containerId).innerHTML = html;
+}
+
+/* 採点対象の対応表 */
+const SETS = {
+  mock1:{fill:{c:"m1-fill",d:MOCK1_FILL,p:"m1f"}, desc:{d:MOCK1_DESC,p:"m1"}},
+  mock2:{fill:{c:"m2-fill",d:MOCK2_FILL,p:"m2f"}, desc:{d:MOCK2_DESC,p:"m2"}},
+  drillK:{fill:{c:"dk-fill",d:DRILL_K,p:"dk"}},
+  drillF:{fill:{c:"df-fill",d:DRILL_F,p:"df"}},
+  descbank:{desc:{d:DESC_BANK,p:"db"}},
+};
+
+function grade(set){
+  const cfg = SETS[set];
+  const data = cfg.fill.d, pre=cfg.fill.p;
+  let correct=0;
+  data.forEach((it,i)=>{
+    const id = pre+"_"+i;
+    const el = document.getElementById(id);
+    const fb = document.getElementById("fb_"+id);
+    const ok = matchAns(el.value, it.a);
+    fb.className = "fb show "+(ok?"correct":"wrong");
+    if(ok){correct++; fb.textContent="○ 正解";}
+    else {fb.innerHTML="× 不正解　<b>正解："+it.a[0]+"</b>"+(it.a.length>1?"（別解："+it.a.slice(1).join("／")+"）":"");}
+    el.style.borderColor = ok? "var(--ok)":"var(--ng)";
+  });
+  const total = data.length;
+  let msg = `穴埋め：${correct} / ${total} 正解`;
+  if(cfg.desc){
+    msg += `（${correct}点／穴埋め${total}点）　＋記述式10点は模範解答で自己採点 → 合計30点`;
+  }
+  document.getElementById("score-"+set).textContent = msg;
+}
+function showModels(set){
+  const cfg = SETS[set];
+  if(!cfg.desc) return;
+  cfg.desc.d.forEach((it,i)=>{
+    document.getElementById("model_"+cfg.desc.p+"_d_"+i).classList.add("show");
+  });
+}
+function revealAll(set){
+  const cfg = SETS[set];
+  const data=cfg.fill.d, pre=cfg.fill.p;
+  data.forEach((it,i)=>{
+    const id=pre+"_"+i;
+    const el=document.getElementById(id);
+    el.value = it.a[0];
+    const fb=document.getElementById("fb_"+id);
+    fb.className="fb show correct";
+    fb.innerHTML="<b>正解："+it.a[0]+"</b>"+(it.a.length>1?"（別解："+it.a.slice(1).join("／")+"）":"");
+    el.style.borderColor="var(--p2)";
+  });
+}
+
+/* ---------- 記述問題バンク ---------- */
+const DESC_BANK = [
+ {n:1, tag:"契約", q:"契約について当事者自治の原則が認められる根拠を複数挙げて説明せよ。",
+  model:"①実質法（民法）上、契約には私的自治（契約自由）の原則が認められ、内容・方式を自由に決められる→準拠法も自由に決定できる。②紛争時にどの法が適用されるか当事者が予見できる（<b>予見可能性</b>の確保）。③契約法分野は家族法と異なり各国で内容の差が小さく、当事者意思で排除できる<b>任意規定</b>が多い。④多くの国が当事者自治を認めるため、当事者の選択した法が適用され<b>判決の国際的調和</b>が実現する。",
+  kw:["私的自治／契約自由","予見可能性の確保","任意規定が多い（家族法と対比）","判決の国際的調和"]},
+ {n:2, tag:"契約", q:"準拠法の分割指定について、百選27事件（東京地判平成14・2・26）を素材に、どの法律問題にどの国の法が適用されたかを含めて説明せよ。",
+  model:"分割指定（デペサージュ）とは、1つの契約を可分な部分ごとに分けて別々の準拠法を選択すること。本件英文保険証券の英国法準拠条項は、<b>保険事故該当性・填補される損害の範囲・保険金支払方法・保険金請求権の消滅時効・遅延損害金・損害防止義務</b>など「請求に対する責任及び決済」に関する問題には<b>英国法</b>を適用し、それ以外（<b>告知義務違反＝締結段階の問題</b>）には法例7条（通則法7条）により行為地法である<b>日本法</b>を適用する旨の分割指定と解された。",
+  kw:["分割指定／デペサージュ","可分な部分ごと","責任・決済＝英国法","消滅時効・損害防止義務＝英国法","告知義務違反＝締結段階→日本法","法例7条（通則法7条）"]},
+ {n:3, tag:"契約", q:"通則法8条の最密接関係地法の決定について、特徴的給付の推定（2項）と不動産の推定（3項）を含めて説明せよ。",
+  model:"8条1項＝法選択がないとき、法律行為当時に最も密接な関係がある地の法による。2項＝<b>特徴的給付</b>（契約を特徴づける給付。金銭給付と非金銭給付では非金銭給付）を行う当事者の常居所地（事業所所在地）法を最密接関係地法と推定。3項＝不動産を目的とする法律行為は<b>不動産所在地</b>法と推定。いずれも推定にすぎず、推定地以外に要素が集中するなど別の地がより密接なら推定は覆る（百選28＝冷凍うなぎで売主の常居所地法＝中国法と推定され、覆らず）。",
+  kw:["8条1項＝最密接関係地法","特徴的給付＝非金銭給付者","常居所地（事業所）法","不動産＝所在地法","推定は覆りうる","百選28"]},
+ {n:4, tag:"契約", q:"黙示的法選択について、百選26事件（ゴルフ用品）を例に説明せよ。",
+  model:"契約書に明示の準拠法選択条項がなくても、特定地の法を選択する意思を裏づける事情があれば<b>黙示的法選択</b>を認定できる。国際裁判管轄の専属的合意・仲裁地の合意・手続中の当事者の行動・特定法秩序の参照等を考慮し、慎重に判断する。百選26では、X1Y1間の代理店契約が日本法準拠であったこと、共同事業のため我が国でY3が設立されたこと等から、そこから派生した各売買契約についても<b>日本法を準拠法とする黙示の合意</b>があったと認めた。",
+  kw:["明示なくても事情から認定","管轄・仲裁地・手続中の行動等を考慮","慎重に判断","百選26＝代理店契約日本法＋日本でY3設立→日本法の黙示合意"]},
+ {n:5, tag:"契約", q:"通則法10条の法律行為の方式について、例題2（絵画売買・準拠法レモン国法で公正証書を要求）でBの主張が認められるか論ぜよ。",
+  model:"方式は①成立の準拠法（10条1項）と②行為地法（2項）の<b>選択的適用</b>で、1項が優先する。選択肢が増える分、契約は方式上有効に成立しやすい。例題2では成立準拠法＝レモン国法（30万ドル超は公正証書必要）だが、行為地法＝日本法（通常の書面で可）。1項・2項いずれかの方式を満たせば有効であり、<b>行為地法（日本法）の方式要件を満たす</b>以上、本件契約は方式上有効に成立する。したがって「公正証書によらないから無効」とのBの主張は認められない。",
+  kw:["1項成立準拠法＋2項行為地法の選択的適用","1項優先","行為地法＝日本法で成立","Bの主張は認められない"]},
+ {n:6, tag:"契約", q:"消費者契約の特例（通則法11条）について、(1)準拠法選択がある場合〔常居所地法が選択／それ以外の法が選択〕、(2)選択がない場合に分けて、消費者がどう保護されるかを説明せよ。",
+  model:"趣旨：情報・交渉力が対等でないため、どの法が選択されても<b>消費者の常居所地法</b>による保護を保障する。<br>(1)法選択あり：①常居所地法が選択→7条・9条どおり特則なしでそのまま適用。②常居所地法以外が選択→7条・9条＋<b>11条1項</b>。消費者が常居所地法中の特定の<b>強行規定</b>の適用を希望する旨を事業者に示せば、その強行規定も上乗せ適用される。<br>(2)法選択なし：<b>11条2項</b>により消費者の常居所地法が全面適用（8条は不適用）。方式は11条3〜5項、適用除外は11条6項。",
+  kw:["趣旨＝不均衡／常居所地法で保護","常居所地法選択→特則なし","他法選択→11条1項＋強行規定の上乗せ","希望を事業者に示す","選択なし→11条2項・全面適用（8条不適用）"]},
+ {n:7, tag:"契約", q:"能動的消費者（active consumer）の適用除外（通則法11条6項1号・2号）について、「勧誘」の例外も含めて説明せよ。",
+  model:"消費者が自らその常居所地を離れて事業者の事業所所在地に赴き契約を締結（1号）、または債務の全部の履行を受けた／受ける予定（2号）のときは、<b>能動的消費者</b>として11条の消費者保護特則は適用されない。ただし事業者から「<b>勧誘</b>」を受けた結果外国に赴いた場合は保護される（1号・2号ただし書）。勧誘＝海外事業者から個別に手紙・メールを受領した場合はあり、単なるウェブサイト開設は勧誘といえるか争いあり。2号は未だ赴いていない「予定」も含む点で1号と異なる。",
+  kw:["自ら赴いて締結（1号）／履行を受ける（2号）","能動的消費者","勧誘を受けた例外→保護","勧誘の意義","2号は『予定』も含む"]},
+ {n:8, tag:"契約", q:"労働契約の特例（通則法12条）について、例題6・百選31を参照しつつ最密接関係地法の決定を説明せよ。",
+  model:"12条は労働者保護のため、法選択の有無にかかわらず<b>最密接関係地法</b>（原則＝<b>労務提供地法</b>、特定不能なら労働者を雇い入れた事業所所在地法）による保護を保障する。選択あり＋最密接関係地法以外が選択→<b>12条1項</b>で労働者は最密接関係地法中の特定の強行規定の適用を求めうる（推定は12条2項）。選択なし→8条1項＋推定12条3項（8条2項の特徴的給付の推定は不適用）。百選31では現実の労務提供地が英国→日本に変わり日本を労務提供地と認定、推定は覆らず最密接関係地法＝日本法として労働契約法の強行規定を適用した。",
+  kw:["原則＝労務提供地法（特定不能→雇入れ事業所所在地）","選択あり＋他法→12条1項＋強行規定","選択なし→8条1項＋12条3項","8条2項の推定は不適用","百選31＝労務提供地日本→日本法"]},
+ {n:9, tag:"不法行為", q:"一般の不法行為（通則法17条）について、隔地的不法行為とバイスタンダーの処理を説明せよ。",
+  model:"17条本文は原則として<b>結果発生地法</b>による。加害行為地と結果発生地が異なる<b>隔地的不法行為</b>では、ただし書により「結果発生地での結果の発生が<b>通常予見</b>できないものであったとき」は<b>加害行為地法</b>による。予見可能性は加害者の主観でなく、加害者と同じ立場の者を基準に客観的に判断。生産物の引渡しを受けた者（＋生計を共にする家族等）には18条が適用されるが、引渡しと無関係の<b>バイスタンダー</b>は引渡し地を予見できないため18条でなく<b>17条</b>（予見可能な結果発生地法）による。最後に20条・21条で準拠法を確定する。",
+  kw:["原則＝結果発生地法","隔地的不法行為","通常予見不能→加害行為地法","予見は客観的基準","家族まで18条／バイスタンダー＝17条","20・21条で確定"]},
+ {n:10, tag:"不法行為", q:"生産物責任の準拠法（通則法18条）について、連結点「引渡し地」を基準とする根拠を説明せよ。",
+  model:"生産物の欠陥を原因とする不法行為では、被害者が生産物とともに移動すると結果発生地が偶然に決まりうるため、加害者はどこで結果が発生するか予見できない。そこで被害者・加害者双方に予見可能な地として生産物を<b>引渡した地</b>を連結点とする（原則＝引渡し地法）。生産業者はその地の安全基準を想定して製品を販売すればよい。引渡し地での引渡しが通常予見できないときは生産業者等の<b>主たる事業所所在地法</b>（ただし書）。18条は引渡しを受けた者＋生計を共にする家族等に適用され、無関係のバイスタンダーは17条。最後に20・21条で確定する。",
+  kw:["結果発生地が偶然→予見困難","双方に予見可能な引渡し地","安全基準を想定できる","予見不能→主たる事業所所在地","家族まで適用／バイスタンダー17条"]},
+ {n:11, tag:"不法行為", q:"名誉又は信用の毀損（通則法19条）について、17条と異なり「通常予見できないとき」の例外がない理由を含めて説明せよ。",
+  model:"情報が容易に拡散し、17条の結果発生地・加害行為地を1国に特定しにくい（<b>拡散的不法行為</b>。ネット情報ならアクセス可能な全地が結果発生地となりうる）。名誉・信用毀損は人の社会的評価の低下だから、被害者のいる「社会」＝<b>常居所地</b>を基準に、複数国で生じた被害を1つの法でまとめて処理する。加害者にとって被害者の常居所地は予見可能といえるため、17条・18条と異なり「通常予見できないとき」の例外は置かれていない。百選36では名誉毀損＝19条で日本法、プライバシー侵害＝17条で日本法とされた。",
+  kw:["拡散的不法行為","社会的評価＝常居所地でまとめ処理","常居所地は予見可能→例外なし","百選36"]},
+ {n:12, tag:"不法行為", q:"通則法20条の例外ルールについて、附従的連結を中心に、例題4（委託契約・工場火災）を例に説明せよ。",
+  model:"17〜19条の原則準拠法より明らかに密接に関係する他地の法があれば、その地の法による（20条）。例示＝当事者の同一常居所地、契約に基づく義務違反（例示列挙なので他の事情も考慮）。当事者間に契約関係があれば、契約に関連して行われた不法行為には契約準拠法が明らかに密接とされやすい（契約準拠法への<b>附従的連結</b>）。附従的連結＝関連する複数の法律問題を1つの法秩序に服させ、異なる法適用による矛盾を回避する。例題4では委託契約準拠法＝日本法、不法行為の原則準拠法（17条）＝オレンジ国法だが、契約義務違反に基づく不法行為なので20条により日本法が適用される可能性が高い。",
+  kw:["原則より明らかに密接な他地","例示＝同一常居所地・契約義務違反","附従的連結で矛盾回避","例題4＝委託契約日本法→20条で日本法"]},
+ {n:13, tag:"不法行為", q:"通則法22条の日本法の累積的適用と、42条の公序則との違いを、懲罰的損害賠償を例に説明せよ。",
+  model:"22条：17〜21条で外国法が準拠法となる場合でも日本法を<b>累積的に適用</b>。1項＝外国法が成立を肯定しても日本法が否定すれば請求は否定。2項＝成立を双方肯定しても、不法行為の<b>効果</b>（損害賠償額・原状回復措置）は日本法が許す範囲でのみ認める。よって外国法で高額な<b>懲罰的損害賠償</b>が命じられても日本法の水準まで減額される。<br>42条（公序）は、準拠外国法の<b>適用結果の異常性</b>＋<b>日本との関連性</b>を考慮して発動を判断するが、22条は成立・効果の異常性や関連性を問題にせず<b>一律に日本法を適用</b>する点で異なる（22条も公序の一種だが発動要件が緩やか）。",
+  kw:["22条＝日本法の累積適用","1項＝成立を否定なら否定","2項＝効果は日本法の範囲","懲罰的賠償は減額","42条＝異常性＋日本との関連性","22条は一律適用"]},
+ {n:14, tag:"不法行為", q:"公海上の不法行為について、大韓航空機撃墜事件（東京地判平成9・7・16、法例下）の処理を説明せよ。",
+  model:"結果発生地説では被害者が公海上で死亡し「法の存在しない場所」が不法行為地となり、法例11条1項（通則法17条）の適用がない。しかし公海で生じた損害につき不法行為が成立しないとするのは不合理。加害者・被害者の本国法が同じならその本国法、異なる場合は事案に応じ一切の事情・当事者間の衡平を考慮し<b>条理</b>によるほかない。本件は被害者の本国法＝法廷地法＝日本法であり、韓国・日本の不法行為規定がほぼ同内容で特段の事情もないため、条理上、被害者の本国法（日本法）に準拠して損害賠償請求権の成立と効力を判断するのが相当とされた。",
+  kw:["結果発生地説では法の不存在→17条適用不能","不成立は不合理","本国法同一ならそれ／異なれば条理・衡平","被害者本国法＝法廷地法＝日本法"]},
+];
+
+/* ---------- シャッフル・ランダム出題 ---------- */
+function shuffle(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+function generateRandom(){
+  const pool = shuffle(DRILL_K.concat(DRILL_F));
+  const fills = pool.slice(0,20).map((it,idx)=>({n:idx+1, pre:it.pre, post:it.post, a:it.a, hint:it.hint}));
+  const descs = shuffle(DESC_BANK).slice(0,2).map((it,idx)=>Object.assign({},it,{n:idx+1}));
+  SETS.random = {fill:{c:"rnd-fill",d:fills,p:"rnd"}, desc:{d:descs,p:"rnd"}};
+  renderFill("rnd-fill",fills,"rnd");
+  renderDesc("rnd-desc",descs,"rnd");
+  document.getElementById("score-random").textContent="";
+  resetTimer('random');
+}
+function shuffleDrill(set){
+  const cfg = SETS[set];
+  cfg.fill.d = shuffle(cfg.fill.d);
+  renderFill(cfg.fill.c, cfg.fill.d, cfg.fill.p);
+  document.getElementById("score-"+set).textContent="";
+}
+function toggleModel(id){ document.getElementById("model_"+id).classList.toggle("show"); }
+function shuffleDesc(){
+  SETS.descbank.desc.d = shuffle(SETS.descbank.desc.d).map((it,idx)=>Object.assign({},it,{n:idx+1}));
+  renderDesc("desc-bank", SETS.descbank.desc.d, "db");
+}
+
+/* ---------- タイマー ---------- */
+const timers = {};
+function fmt(s){const m=Math.floor(s/60), r=s%60; return `${String(m).padStart(2,'0')}:${String(r).padStart(2,'0')}`;}
+function startTimer(set){
+  if(timers[set]&&timers[set].id) return;
+  if(!timers[set]) timers[set]={remain:1800,id:null};
+  const disp=document.getElementById("t-"+set);
+  timers[set].id=setInterval(()=>{
+    timers[set].remain--;
+    disp.textContent=fmt(timers[set].remain);
+    if(timers[set].remain<=300) disp.classList.add("warn");
+    if(timers[set].remain<=0){clearInterval(timers[set].id);timers[set].id=null;disp.textContent="00:00";alert("時間終了（30分）。答え合わせをしましょう。");}
+  },1000);
+}
+function resetTimer(set){
+  if(timers[set]&&timers[set].id) clearInterval(timers[set].id);
+  timers[set]={remain:1800,id:null};
+  const disp=document.getElementById("t-"+set);
+  disp.textContent="30:00"; disp.classList.remove("warn");
+}
+
+/* ---------- タブ ---------- */
+document.getElementById("tabs").addEventListener("click",e=>{
+  if(e.target.tagName!=="BUTTON") return;
+  const t=e.target.dataset.t;
+  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("active",b===e.target));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id===t));
+});
+
+/* ---------- 初期描画 ---------- */
+renderFill("m1-fill",MOCK1_FILL,"m1f");
+renderDesc("m1-desc",MOCK1_DESC,"m1");
+renderFill("m2-fill",MOCK2_FILL,"m2f");
+renderDesc("m2-desc",MOCK2_DESC,"m2");
+renderFill("dk-fill",DRILL_K,"dk");
+renderFill("df-fill",DRILL_F,"df");
+renderDesc("desc-bank",DESC_BANK,"db");
+generateRandom();
+</script>
+</body>
+</html>
