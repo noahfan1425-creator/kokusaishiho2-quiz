@@ -81,6 +81,7 @@
     <button data-t="descbank">記述対策 ✍️</button>
     <button data-t="drillK">ドリル：契約</button>
     <button data-t="drillF">ドリル：不法行為</button>
+    <button data-t="review">間違い復習 📝<span id="rev-badge"></span></button>
     <button data-t="check">チェックシート</button>
   </div>
 
@@ -186,6 +187,26 @@
         <button class="btn ghost" onclick="showModels('descbank')">全模範解答を表示</button>
       </div>
       <div id="desc-bank"></div>
+    </div>
+  </div>
+
+  <!-- ================= 間違い復習 ================= -->
+  <div class="panel" id="review">
+    <div class="card">
+      <h3>間違い復習 📝</h3>
+      <div class="sub">「答え合わせ」で間違えた穴埋めが自動で記録されます（正解すると自動で克服＝削除）。記述は各問の「★復習に追加」で登録。記録はこのブラウザに保存されます。</div>
+      <div style="text-align:center;margin-bottom:6px">
+        <button class="btn" onclick="reviewRetest()">🔁 間違いだけ再テスト</button>
+        <button class="btn ghost" onclick="clearMistakes()">🗑 全消去</button>
+      </div>
+      <div id="review-list"></div>
+      <div id="review-quiz-wrap" style="display:none">
+        <hr style="border:none;border-top:1px dashed var(--line);margin:18px 0">
+        <h3>再テスト</h3>
+        <div id="review-quiz"></div>
+        <div style="text-align:center"><button class="btn" onclick="grade('review')">答え合わせ</button></div>
+        <div class="score" id="score-review"></div>
+      </div>
     </div>
   </div>
 
@@ -461,7 +482,10 @@ function renderDesc(containerId, data, idPrefix){
     return `<div class="q">
       <div><span class="num">(${it.n})</span>${it.q}${tag}</div>
       <textarea id="${id}" placeholder="ここに答案を入力（手書き練習でも可）"></textarea>
-      <div style="margin-top:6px"><button class="btn ghost" onclick="toggleModel('${id}')">▼ 模範解答を見る／隠す</button></div>
+      <div style="margin-top:6px">
+        <button class="btn ghost" onclick="toggleModel('${id}')">▼ 模範解答を見る／隠す</button>
+        <button class="btn ghost" id="rev_${id}" onclick='toggleDescReview(this, ${JSON.stringify(it.q)})'>★ 復習に追加</button>
+      </div>
       <div class="model" id="model_${id}">
         <b>▼ 模範解答</b><br>${it.model}
         <div style="margin-top:8px"><b>採点キーワード：</b><br>${kw}</div>
@@ -479,6 +503,79 @@ const SETS = {
   drillF:{fill:{c:"df-fill",d:DRILL_F,p:"df"}},
 };
 
+/* ---------- 間違い記録（localStorage） ---------- */
+const LS_KEY = "ksh2_mistakes_v1";
+let MIST = loadMistakes();
+function loadMistakes(){
+  try{ const o=JSON.parse(localStorage.getItem(LS_KEY)); return (o&&o.fill&&o.desc)?o:{fill:{},desc:{}}; }
+  catch(e){ return {fill:{},desc:{}}; }
+}
+function saveMistakes(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(MIST)); }catch(e){} }
+function fillKey(it){ return it.pre+"｜"+it.a[0]; }
+function recordFill(it, your, ok){
+  const k = fillKey(it);
+  if(ok){ delete MIST.fill[k]; }
+  else { MIST.fill[k] = {pre:it.pre, post:it.post, a:it.a, your:your, ts:Date.now()}; }
+}
+function toggleDescReview(btn, q){
+  const k = q;
+  if(MIST.desc[k]){ delete MIST.desc[k]; btn.textContent="★ 復習に追加"; }
+  else { MIST.desc[k] = {q:q, ts:Date.now()}; btn.textContent="✓ 復習に登録済み（解除）"; }
+  saveMistakes(); renderMistakes(); updateBadge();
+}
+function removeMistake(type, k){
+  delete MIST[type][k];
+  saveMistakes(); renderMistakes(); updateBadge();
+}
+function clearMistakes(){
+  if(!confirm("記録した間違いをすべて消去します。よろしいですか？")) return;
+  MIST = {fill:{},desc:{}};
+  saveMistakes(); renderMistakes(); updateBadge();
+  document.getElementById("review-quiz-wrap").style.display="none";
+}
+function updateBadge(){
+  const n = Object.keys(MIST.fill).length + Object.keys(MIST.desc).length;
+  const b = document.getElementById("rev-badge");
+  if(b) b.textContent = n? " ("+n+")" : "";
+}
+function renderMistakes(){
+  const c = document.getElementById("review-list");
+  if(!c) return;
+  const fills = Object.entries(MIST.fill).sort((a,b)=>a[1].ts-b[1].ts);
+  const descs = Object.entries(MIST.desc).sort((a,b)=>a[1].ts-b[1].ts);
+  let html="";
+  if(!fills.length && !descs.length){
+    html = '<div class="hint">まだ記録はありません。模試・ドリルで「答え合わせ」すると間違えた穴埋めが自動で記録され、記述は各問の「★復習に追加」で登録できます。</div>';
+    c.innerHTML = html; return;
+  }
+  if(fills.length){
+    html += `<h4 style="color:var(--p1)">穴埋め（自動記録）：${fills.length}件</h4>`;
+    html += fills.map(([k,v])=>`<div class="q">
+      <div>${v.pre}（　）${v.post}</div>
+      <div class="fb show wrong">あなたの解答：${v.your? v.your : "（空欄）"}</div>
+      <div class="fb show correct">正解：${v.a[0]}${v.a.length>1? "（別解："+v.a.slice(1).join("／")+"）":""}</div>
+      <button class="btn ghost" onclick='removeMistake("fill", ${JSON.stringify(k)})'>✓ 克服（削除）</button>
+    </div>`).join("");
+  }
+  if(descs.length){
+    html += `<h4 style="color:var(--p1)">記述（手動登録）：${descs.length}件</h4>`;
+    html += descs.map(([k,v])=>`<div class="q">
+      <div>${v.q}</div>
+      <button class="btn ghost" onclick='removeMistake("desc", ${JSON.stringify(k)})'>削除</button>
+    </div>`).join("");
+  }
+  c.innerHTML = html;
+}
+function reviewRetest(){
+  const items = Object.values(MIST.fill).map((v,i)=>({n:i+1, pre:v.pre, post:v.post, a:v.a}));
+  const wrap = document.getElementById("review-quiz-wrap");
+  if(!items.length){ alert("記録された穴埋めの間違いがありません。"); wrap.style.display="none"; return; }
+  SETS.review = {fill:{c:"review-quiz", d:items, p:"rv"}};
+  renderFill("review-quiz", items, "rv");
+  document.getElementById("score-review").textContent="";
+  wrap.style.display="block";
+}
+
 function grade(set){
   const cfg = SETS[set];
   const data = cfg.fill.d, pre=cfg.fill.p;
@@ -492,7 +589,9 @@ function grade(set){
     if(ok){correct++; fb.textContent="○ 正解";}
     else {fb.innerHTML="× 不正解　<b>正解："+it.a[0]+"</b>"+(it.a.length>1?"（別解："+it.a.slice(1).join("／")+"）":"");}
     el.style.borderColor = ok? "var(--ok)":"var(--ng)";
+    recordFill(it, el.value, ok);
   });
+  saveMistakes(); renderMistakes(); updateBadge();
   const total = data.length;
   let msg = `穴埋め：${correct} / ${total} 正解`;
   if(cfg.desc){
@@ -634,6 +733,8 @@ renderFill("dk-fill",DRILL_K,"dk");
 renderFill("df-fill",DRILL_F,"df");
 renderDesc("desc-bank",DESC_BANK,"db");
 generateRandom();
+renderMistakes();
+updateBadge();
 </script>
 </body>
 </html>
