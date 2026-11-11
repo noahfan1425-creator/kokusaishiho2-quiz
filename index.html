@@ -45,7 +45,10 @@
   .crit{margin-top:10px;background:#fff;border:1px solid var(--p3);border-radius:10px;padding:10px 14px;}
   .crit b{color:var(--p1);font-size:.9rem;}
   ol.steps{margin:8px 0 2px;padding-left:1.4em;}
-  ol.steps li{margin:4px 0;font-size:.92rem;}
+  ol.steps li{margin:6px 0;font-size:.92rem;}
+  .steplbl{cursor:pointer;display:inline-flex;align-items:flex-start;gap:6px;}
+  .steplbl input{margin-top:5px;transform:scale(1.15);cursor:pointer;}
+  .descscore{margin-top:10px;font-weight:800;font-size:1.05rem;color:var(--p1);}
   .btn{background:var(--p1);color:#fff;border:none;padding:10px 20px;border-radius:10px;
     cursor:pointer;font-size:.98rem;font-weight:700;margin:6px 6px 6px 0;}
   .btn.ghost{background:#fff;color:var(--p1);border:1px solid var(--p2);}
@@ -482,7 +485,7 @@ function renderDesc(containerId, data, idPrefix){
   const html = data.map((it,i)=>{
     const id = idPrefix+"_d_"+i;
     const crit = (it.steps && it.steps.length ? it.steps : (it.kw||[]));
-    const critHtml = crit.map(s=>`<li>${s}</li>`).join("");
+    const critHtml = crit.map(s=>`<li><label class="steplbl"><input type="checkbox" class="stepchk" data-grp="${id}" onchange="scoreDesc('${id}')"> <span>${s}</span></label></li>`).join("");
     const tag = it.tag?`<span class="tag">${it.tag}</span>`:"";
     return `<div class="q">
       <div><span class="num">(${it.n})</span>${it.q}${tag}</div>
@@ -493,11 +496,26 @@ function renderDesc(containerId, data, idPrefix){
       </div>
       <div class="model" id="model_${id}">
         <b>▼ 模範解答</b><br>${it.model}
-        <div class="crit"><b>採点基準（答案の流れ：法性決定 → 適用条文 → 適用の順序 → 準拠法の決定 → どの国の法で裁くか）</b><ol class="steps">${critHtml}</ol></div>
+        <div class="crit">
+          <b>採点基準（答案の流れ：法性決定 → 適用条文 → 適用の順序 → 準拠法の決定 → どの国の法で裁くか）</b>
+          <div class="hint">書けていた項目にチェックすると得点率（％）が自動計算されます。</div>
+          <ol class="steps">${critHtml}</ol>
+          <div class="descscore" id="score_${id}">得点率：0%（0 / ${crit.length} 項目）</div>
+        </div>
       </div>
     </div>`;
   }).join("");
   document.getElementById(containerId).innerHTML = html;
+}
+function scoreDesc(id){
+  const boxes = [...document.querySelectorAll('.stepchk[data-grp="'+id+'"]')];
+  const total = boxes.length;
+  const got = boxes.filter(b=>b.checked).length;
+  const pct = total? Math.round(got/total*100) : 0;
+  const el = document.getElementById('score_'+id);
+  if(!el) return;
+  el.textContent = '得点率：'+pct+'%（'+got+' / '+total+' 項目）';
+  el.style.color = pct>=80? 'var(--ok)' : (pct>=50? 'var(--p1)' : 'var(--ng)');
 }
 
 /* 採点対象の対応表 */
@@ -600,7 +618,7 @@ function grade(set){
   const total = data.length;
   let msg = `穴埋め：${correct} / ${total} 正解`;
   if(cfg.desc){
-    msg += `（${correct}点／穴埋め${total}点）　＋記述式10点は模範解答で自己採点 → 合計30点`;
+    msg += `（穴埋め ${correct}/${total}点）　＋記述式は各問の採点基準にチェックして得点率（％）で自己採点`;
   }
   document.getElementById("score-"+set).textContent = msg;
 }
