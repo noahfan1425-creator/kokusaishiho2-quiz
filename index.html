@@ -99,7 +99,7 @@
       <div class="t" id="t-mock1">30:00</div>
       <div>
         <button class="btn ghost" onclick="startTimer('mock1')">開始</button>
-        <button class="btn ghost" onclick="resetTimer('mock1')">リセット</button>
+        <button class="btn ghost" onclick="resetSet('mock1')">リセット</button>
       </div>
     </div>
 
@@ -128,7 +128,7 @@
       <div class="t" id="t-mock2">30:00</div>
       <div>
         <button class="btn ghost" onclick="startTimer('mock2')">開始</button>
-        <button class="btn ghost" onclick="resetTimer('mock2')">リセット</button>
+        <button class="btn ghost" onclick="resetSet('mock2')">リセット</button>
       </div>
     </div>
 
@@ -157,7 +157,7 @@
       <div class="t" id="t-random">30:00</div>
       <div>
         <button class="btn ghost" onclick="startTimer('random')">開始</button>
-        <button class="btn ghost" onclick="resetTimer('random')">リセット</button>
+        <button class="btn ghost" onclick="resetSet('random')">リセット</button>
       </div>
     </div>
 
@@ -733,7 +733,34 @@ function resetTimer(set){
   if(timers[set]&&timers[set].id) clearInterval(timers[set].id);
   timers[set]={remain:1800,id:null};
   const disp=document.getElementById("t-"+set);
-  disp.textContent="30:00"; disp.classList.remove("warn");
+  if(disp){ disp.textContent="30:00"; disp.classList.remove("warn"); }
+}
+/* タイマー＋答案（穴埋め・記述・採点）をまとめてリセット */
+function resetSet(set){
+  resetTimer(set);
+  const cfg=SETS[set];
+  if(cfg && cfg.fill){
+    cfg.fill.d.forEach((it,i)=>{
+      const id=cfg.fill.p+"_"+i;
+      const el=document.getElementById(id);
+      if(el){ el.value=""; el.style.borderColor=""; }
+      const fb=document.getElementById("fb_"+id);
+      if(fb){ fb.className="fb"; fb.textContent=""; }
+    });
+  }
+  if(cfg && cfg.desc){
+    cfg.desc.d.forEach((it,i)=>{
+      const did=cfg.desc.p+"_d_"+i;
+      const ta=document.getElementById(did);
+      if(ta) ta.value="";
+      const model=document.getElementById("model_"+did);
+      if(model) model.classList.remove("show");
+      document.querySelectorAll('.stepchk[data-grp="'+did+'"]').forEach(b=>{ b.checked=false; });
+      scoreDesc(did);
+    });
+  }
+  const sc=document.getElementById("score-"+set);
+  if(sc) sc.textContent="";
 }
 
 /* ---------- タブ ---------- */
